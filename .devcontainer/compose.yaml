@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    container_name: dah2026
+    volumes:
+      - ..:/app
+      - node-cache:/app/node_modules
+      - angular-cache:/app/.angular
+    ports:
+      - "8100:8100"
+
+volumes:
+  node-cache:
+  angular-cache:

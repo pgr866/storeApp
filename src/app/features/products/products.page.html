@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis Productos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToAddProduct()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+      <div class="vertical-divider"></div>
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list class="margin-top centered-content">
+    @for (product of productService.products(); track product.id) {
+    <ion-item [routerLink]="['/product-detail', product.id]">
+      <ion-thumbnail slot="start">
+        <img [src]="product.imageUrl" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+      </ion-label>
+    </ion-item>
+    } @empty {
+    <ion-item>No tienes productos registrados.</ion-item>
+    }
+  </ion-list>
+</ion-content>

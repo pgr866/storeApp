@@ -1,0 +1,23 @@
+{
+  "name": "dah2026",
+  "dockerComposeFile": "compose.yaml",
+  "service": "app",
+  "workspaceFolder": "/app",
+  "overrideCommand": true,
+  "initializeCommand": "(git config --get user.name || echo 'Developer') > .devcontainer/.git_name && (git config --get user.email || echo 'dev@example.com') > .devcontainer/.git_email && clear",
+  "postCreateCommand": "git config --global url.\"https://github.com/\".insteadOf git@github.com: && git config --global user.name \"$(cat .devcontainer/.git_name)\" && git config --global user.email \"$(cat .devcontainer/.git_email)\" && rm .devcontainer/.git_name .devcontainer/.git_email && clear",
+  "postStartCommand": "npm run start",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "angular.ng-template",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "yoavbls.pretty-ts-errors",
+        "christian-kohler.path-intellisense",
+        "echoapi.echoapi-for-vscode",
+        "github.copilot-chat"
+      ]
+    }
+  }
+}

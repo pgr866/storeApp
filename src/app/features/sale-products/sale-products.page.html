@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Catálogo de Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list class="margin-top centered-content">
+    @for (product of productService.saleProducts(); track product.id) {
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img [src]="product.imageUrl" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+      </ion-label>
+    </ion-item>
+    } @empty {
+    <ion-item>No hay productos a la venta en este momento.</ion-item>
+    }
+  </ion-list>
+</ion-content>

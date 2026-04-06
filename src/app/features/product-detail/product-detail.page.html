@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle de Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  @if (productService.currentProduct(); as product) {
+  @if (product.imageUrl !== 'N/A') {
+  <div class="product-image-container">
+    <img [src]="product.imageUrl" [alt]="product.name" />
+  </div>
+  }
+  <ion-card class="centered-content">
+    <ion-card-header>
+      <div class="ion-display-flex ion-justify-content-between ion-align-items-center"
+        style="display: flex; width: 100%;">
+        <ion-card-title>{{ product.name }}</ion-card-title>
+        <ion-button color="danger" fill="clear" (click)="confirmDelete()">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-card-header>
+    <ion-card-content>
+      @if (product.description !== 'N/A') { <p class="font-size-1"> {{ product.description }}</p> }
+    </ion-card-content>
+  </ion-card>
+  } @else {
+  <ion-spinner class="centered-content" name="crescent"></ion-spinner>
+  }
+</ion-content>
